@@ -29,3 +29,12 @@ body {
   font-weight: 500;
   font-style: italic;
 }
+
+.SearchBar{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
