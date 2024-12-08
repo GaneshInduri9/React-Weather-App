@@ -12,37 +12,6 @@ function App(){
         baseUrl : "https://api.shecodes.io/weather/v1/"
     };
 
-    const toDate = () => {
-        const months = [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"
-        ];
-        const days = [
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday"
-        ];
-
-        const currentDate = new Date();
-        const date = `${days[currentDate.getDay()]} ${currentDate.getDate()} ${months[currentDate.getMonth()]
-        }`;
-        return date;
-    };
-
     const [query, setQuery] = useState("");
     const [weather, setWeather] = useState({
         loading : false,

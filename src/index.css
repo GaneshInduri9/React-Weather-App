@@ -83,3 +83,61 @@ body {
   font-weight: bold;
   margin-top: auto;
 }
+
+.city-name {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.date {
+  font-size: 18px;
+  font-weight: 500;
+  font-style: oblique;
+}
+
+.temp {
+  font-size: 64px;
+  font-weight: 700;
+  color: #1e2432;
+  text-align: center;
+}
+
+.temp-deg {
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.temp-icon{
+  width: 20%;
+}
+
+.weather-des {
+  color: #5400c2;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.weather-info {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+  padding: 0 20px;
+  color: #1e2432;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.col {
+  display: flex;
+  align-items: center;
+  text-align: start;
+  line-height: 1px;
+}
+
+.col p{
+  margin-left: 5px;
+}
