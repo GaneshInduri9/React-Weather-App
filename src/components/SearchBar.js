@@ -12,7 +12,7 @@ function SearchBar({query, setQuery, search}){
             <input
                 type="text"
                 className="city-search"
-                placeholder="Search...."
+                placeholder="Enter your city name"
                 name = "query"
                 value = {query}
                 onChange={(e) => setQuery(e.target.value)}
