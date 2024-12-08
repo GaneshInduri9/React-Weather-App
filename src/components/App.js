@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import Forecast from './Forecast';
 import axios from "axios";
@@ -37,6 +37,23 @@ function App(){
                 });
         }
     };
+
+    useEffect(() => {
+        const fetchData = async () => {
+          const apiKey = "b03a640e5ef6980o4da35b006t5f2942";
+          const url = `https://api.shecodes.io/weather/v1/current?query=Chennai&key=${apiKey}`;
+    
+          try {
+            const response = await axios.get(url);
+            setWeather({ data: response.data, loading: false, error: false });
+          } catch (error) {
+            setWeather({ data: {}, loading: false, error: true });
+            console.log("error", error);
+          }
+        };
+    
+        fetchData();
+      }, []);
     return(
         <div className='App'>
             {/* Search component */}

@@ -3,12 +3,12 @@ import React from "react";
 function SearchBar({query, setQuery, search}){
     //on presss query the data from openweather map org
     const handlePress = (e) =>{
-        if(e.key === "Enter"){
+        if(e.key === 'Enter'){
             search(e);
         }
     };
     return(
-        <div className="SeachBar">
+        <div className="SearchBar">
             <input
                 type="text"
                 className="city-search"
@@ -16,7 +16,7 @@ function SearchBar({query, setQuery, search}){
                 name = "query"
                 value = {query}
                 onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={handlePress}
+                onKeyPress={handlePress}
             />
             <button onClick={search}><i className="fas fa-search" style={{ fontSize: "18px" }}></i></button>
         </div>
