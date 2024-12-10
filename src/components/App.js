@@ -38,10 +38,52 @@ function App(){
         }
     };
 
+    const getCityName = async(lati, longi) => {
+        const apiKey = "15ca5c63283b4e22adf1b819eee5d81d";
+        const url = `https://api.opencagedata.com/geocode/v1/json?q=${lati}+${longi}&key=${apiKey}`;
+
+        try{
+            const response = await fetch(url);
+            const data = await response.json();
+            const city = data.results[0].components.city || data.results[0].components.town;
+            console.log("City Name:", city);
+            return city;
+        }
+        catch (error){
+            console.error("Error fetching location name:", error);
+            return null;
+        }
+    }
+
+    const handleCurrentLocation = () => {
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(
+                async(position) => {
+                    const {latitude, longitude} = position.coords;
+                    const cityName = await getCityName(latitude, longitude);
+
+                    if(cityName){
+                        setWeather({...weather,loading:true});
+                        const url = `${api.baseUrl}/current?query=${cityName}&key=${api.key}`;
+                        await axios
+                            .get(url)
+                            .then((res) => {
+                                console.log("Fetched the data from api " + JSON.stringify(res.data, null, 2)); 
+                                setWeather({loading:false, data: res.data, error: false});
+                            })
+                            .catch((error)=>{
+                                console.log("Error : unable to fetch the data "+ error);
+                                setWeather({...weather,data:{},error:true});
+                            });
+                    }
+                }
+            )
+        }
+    }
+
     useEffect(() => {
         const fetchData = async () => {
-          const apiKey = "b03a640e5ef6980o4da35b006t5f2942";
-          const url = `https://api.shecodes.io/weather/v1/current?query=Chennai&key=${apiKey}`;
+          const url = `${api.baseUrl}/current?query=Chennai&key=${api.key}`;
     
           try {
             const response = await axios.get(url);
@@ -57,7 +99,7 @@ function App(){
     return(
         <div className='App'>
             {/* Search component */}
-            <SearchBar query={query} setQuery={setQuery} search={search}/>
+            <SearchBar query={query} setQuery={setQuery} search={search} handleCurrentLocation={handleCurrentLocation}/>
             {weather.loading && (
                 <>
                     <br />

@@ -70,6 +70,20 @@ body {
   color: #f06789;
 }
 
+.current-location-btn {
+  margin-left: 10px;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.current-location-btn:hover {
+  background: #0056b3;
+}
+
 .city-name {
   font-size: 20px;
   margin-bottom: 10px;

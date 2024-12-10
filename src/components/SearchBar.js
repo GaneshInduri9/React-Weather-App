@@ -1,6 +1,6 @@
 import React from "react";
 
-function SearchBar({query, setQuery, search}){
+function SearchBar({query, setQuery, search, handleCurrentLocation}){
     //on presss query the data from openweather map org
     const handlePress = (e) =>{
         if(e.key === 'Enter'){
@@ -19,6 +19,9 @@ function SearchBar({query, setQuery, search}){
                 onKeyPress={handlePress}
             />
             <button onClick={search}><i className="fas fa-search" style={{ fontSize: "18px" }}></i></button>
+            <button onClick={handleCurrentLocation} className="current-location-btn">
+                <i className="fas fa-location-arrow" style={{ fontSize: "18px" }}></i>
+            </button>
         </div>
     );
 }
